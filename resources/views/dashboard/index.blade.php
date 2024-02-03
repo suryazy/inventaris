@@ -32,41 +32,8 @@
           <td>{{ $item->status }}</td>
           <td>ready berapa</td>
           <td>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Edit
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Pengguna</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Pilih Pengguna
-                        </button>
-                        <ul class="dropdown-menu">
-                          @foreach ($users as $user)
-                            <li><button class="dropdown-item" type="button">{{ $user->name }}</button></li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            hapus
+            <a href="#">Edit</a>
+            <a href="#">Hapus</a>
           </td>
         </tr>   
         @endforeach
