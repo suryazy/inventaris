@@ -55,7 +55,9 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('dashboard.edit', [
+            'item' => $item
+        ]);
     }
 
     /**

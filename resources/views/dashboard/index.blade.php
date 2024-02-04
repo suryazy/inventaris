@@ -32,7 +32,7 @@
           <td>{{ $item->status }}</td>
           <td>ready berapa</td>
           <td>
-            <a href="#">Edit</a>
+            <a href="/dashboard/{{ $item->id }}/edit">Edit</a>
             <a href="#">Hapus</a>
           </td>
         </tr>   
