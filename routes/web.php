@@ -26,4 +26,6 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::resource('/dashboard', ItemController::class)->middleware('auth');
+// Route::resource('/dashboard', ItemController::class)->middleware('auth');
+Route::get('/dashboard', [ItemController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/{item:id}/edit', [ItemController::class, 'edit'])->middleware('auth');
