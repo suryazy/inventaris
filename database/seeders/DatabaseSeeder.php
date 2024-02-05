@@ -28,7 +28,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'username' => 'admin',
             'role' => 'admin',
-            'is_admin' => 1
+            'is_admin' => 1,
+            'using' => 1,
+            'used' => 2
         ]);
 
         User::factory(4)->create();
@@ -61,9 +63,9 @@ class DatabaseSeeder extends Seeder
         ]);
         Item::create([
             'name' => 'mouse',
-            'stock' => 8,
+            'stock' => 18,
             'category_id' => 3,
-            'description' => 'Lenovo i5-10500 GTX1650 8GB RAM'
+            'description' => 'Ryzer Deathadder'
         ]);
         Item::create([
             'name' => 'flashdisk',

@@ -24,8 +24,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="usedBy" class="form-label">Digunakan Oleh</label>
-                <input type="text" class="form-control" id="usedBy" name="usedBy">
+                <label for="using" class="form-label">Digunakan Oleh</label>
+                @dd($using_by)
+                <input type="text" class="form-control" id="using" name="using" value="{{ old('using', $using_by->name) }}">
               </div>
         </div>
         <div class="col-md-6">

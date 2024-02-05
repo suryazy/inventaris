@@ -15,8 +15,7 @@ class ItemController extends Controller
     public function index()
     {
         return view('dashboard.index', [
-            'items' => Item::get(),
-            'users' => User::get()
+            'items' => Item::get()
         ]);
     }
 
@@ -56,7 +55,8 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         return view('dashboard.edit', [
-            'item' => $item
+            'item' => $item,
+            'using_by' => User::where('using', $item->id)->get()
         ]);
     }
 
