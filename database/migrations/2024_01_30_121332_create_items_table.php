@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('stock');
+            $table->integer('stock_ready')->nullable();
             $table->foreignId('category_id');
             $table->text('description');
             $table->boolean('status')->nullable();

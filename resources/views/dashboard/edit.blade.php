@@ -8,7 +8,9 @@
     <h1 class="h2">Edit Pengguna {{ $item->name }}</h1>
 </div>
 
-<form method="post" action="/dashboard/{{ $item->id }}">
+<form method="post" action="/dashboard/{{ $item->id }}/edit">
+  @csrf
+  @method('put')
     <div class="mb-3">
       <label for="name" class="form-label">Nama Barang</label>
       <input type="text" class="form-control" id="name" name="name" disabled value="{{ old('name', $item->name) }}">
@@ -18,25 +20,26 @@
       <input type="number" class="form-control" name="stock" id="stock" disabled value="{{ old('stock', $item->stock) }}">
     </div>
     <div class="mb-3">
-      <label for="stockReady" class="form-label">Jumlah Tersedia</label>
-      <input type="number" class="form-control" name="stockReady" id="stockReady">
+      <label for="stock_ready" class="form-label">Jumlah Tersedia</label>
+      <input type="number" class="form-control" id="stock_ready" name="stock_ready" disabled value="{{ $stock_ready }}">
     </div>
+    @foreach ($using_by as $data)
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="using" class="form-label">Digunakan Oleh</label>
-                @foreach ($using_by as $data)
-                    <input type="text" class="form-control" id="using" name="using" value="{{ old('using', $data->name) }}">
-                @endforeach
-              </div>
+                <label for="using_by" class="form-label">Digunakan Oleh</label>
+                <input type="text" class="form-control" id="using_by" name="using_by" value="{{ old('using_by', $data->name) }}">
+                <input type="hidden" class="form-control" id="using" name="using" value="{{ $data->using }}">
+            </div>
         </div>
         <div class="col-md-6">
-            <div class="mb-3">
-                <label for="used" class="form-label">Jumlah Digunakan</label>
-                <input type="number" class="form-control" id="used" name="used">
-              </div>
+          <div class="mb-3">
+            <label for="used" class="form-label">Jumlah Digunakan</label>
+            <input type="number" class="form-control" id="used" name="used" value="{{ old('used', $data->used) }}">
+          </div>
         </div>
     </div>
+    @endforeach
     <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
     

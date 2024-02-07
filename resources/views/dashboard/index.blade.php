@@ -30,7 +30,7 @@
           <td>{{ $item->description }}</td>
           <td>{{ $item->stock }}</td>
           <td>{{ $item->status }}</td>
-          <td>ready berapa</td>
+          <td>{{ $item->stock_ready }}</td>
           <td>
             <a href="/dashboard/{{ $item->id }}/edit">Edit</a>
             <a href="#">Hapus</a>

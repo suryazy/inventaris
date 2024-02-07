@@ -29,3 +29,4 @@ Route::post('/logout', [LoginController::class, 'logout']);
 // Route::resource('/dashboard', ItemController::class)->middleware('auth');
 Route::get('/dashboard', [ItemController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/{item:id}/edit', [ItemController::class, 'edit'])->middleware('auth');
+Route::put('/dashboard/{item:id}/edit', [ItemController::class, 'update'])->middleware('auth');
