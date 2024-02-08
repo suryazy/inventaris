@@ -20,6 +20,11 @@
       <input type="number" class="form-control" name="stock" id="stock" disabled value="{{ old('stock', $item->stock) }}">
     </div>
     <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <input type="text" class="form-control" disabled value="@if($status){{ 'Tersedia' }} @else{{ 'Tidak Tersedia' }}@endif">
+      <input type="hidden" class="form-control" name="status" id="status" value="{{ old('status', $status) }}">
+    </div>
+    <div class="mb-3">
       <label for="stock_ready" class="form-label">Jumlah Tersedia</label>
       <input type="number" class="form-control" id="stock_ready" name="stock_ready" disabled value="{{ $stock_ready }}">
     </div>

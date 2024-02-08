@@ -58,10 +58,15 @@ class ItemController extends Controller
         $used = $item->stock;
         $used_by = DB::table('users')->where('used', '>', 0)->sum('used');
         $stock_ready = $used - $used_by;
+        $status = false;
+        if ($stock_ready > 0) {
+            $status = true;
+        }
         return view('dashboard.edit', [
             'item' => $item,
             'using_by' => User::where('using', $item->id)->get(),
-            'stock_ready' => $stock_ready
+            'stock_ready' => $stock_ready,
+            'status' => $status
         ]);
     }
 
@@ -81,7 +86,10 @@ class ItemController extends Controller
         $stock_ready = $used - $validatedData['used'];
 
         User::where('id', $item->id)->update($validatedData);
-        Item::where('id', $item->id)->update(['stock_ready' => $stock_ready]);
+        Item::where('id', $item->id)->update([
+            'stock_ready' => $stock_ready,
+            'status' => $request->status
+        ]);
 
         return redirect('/dashboard')->with('success', 'Postingan telah diupdate.');
     }

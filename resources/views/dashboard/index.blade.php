@@ -29,7 +29,7 @@
           <td>{{ $item->category_id }}</td>
           <td>{{ $item->description }}</td>
           <td>{{ $item->stock }}</td>
-          <td>{{ $item->status }}</td>
+          <td>@if($item->status){{ 'Tersedia' }} @else{{ 'Tidak Tersedia' }}@endif</td>
           <td>{{ $item->stock_ready }}</td>
           <td>
             <a href="/dashboard/{{ $item->id }}/edit">Edit</a>
