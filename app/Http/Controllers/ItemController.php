@@ -66,7 +66,8 @@ class ItemController extends Controller
             'item' => $item,
             'using_by' => User::where('using', $item->id)->get(),
             'stock_ready' => $stock_ready,
-            'status' => $status
+            'status' => $status,
+            'list_users' => User::get()
         ]);
     }
 
@@ -83,9 +84,10 @@ class ItemController extends Controller
         $validatedData = $request->validate($rules);
 
         $used = $item->stock;
-        $stock_ready = $used - $validatedData['used'];
+        $used_by = DB::table('users')->where('used', '>', 0)->sum('used');
+        $stock_ready = $used - $used_by;
 
-        User::where('id', $item->id)->update($validatedData);
+        User::where('name', $request->using_by)->update($validatedData);
         Item::where('id', $item->id)->update([
             'stock_ready' => $stock_ready,
             'status' => $request->status

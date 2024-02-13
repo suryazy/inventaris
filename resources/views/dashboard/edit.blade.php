@@ -45,6 +45,35 @@
         </div>
     </div>
     @endforeach
+    <div class="row">
+      <div class="col-md-6">
+        <label for="using_by" class="form-label">Tambah Pengguna</label>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Nama Pengguna
+              </button>
+              <ul class="dropdown-menu">
+                @foreach ($list_users as $user)
+                  <li><a class="dropdown-item" href="/dashboard/{{ $item->id }}/edit?n={{ $user->name }}">{{ $user->name }}</a></li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="using_by" id="using_by" value="{{ request()->n }}">
+            <input type="hidden" class="form-control" id="using" name="using" value="1">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="used" class="form-label">Jumlah Digunakan</label>
+          <input type="number" class="form-control" id="used" name="used">
+        </div>
+      </div>
+  </div>
     <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
     
